@@ -1,0 +1,16 @@
+Experience: Over 12 years in DevOps, cloud, Kafka, Linux, and middleware.
+
+Certifications: AWS Solutions Architect, Microsoft Azure DevOps, Kubernetes Administration, Amazon EKS, Cloudera Hadoop Administration.
+
+Current Role: Working at SagarSoft for Point72 (hedge fund company).
+
+Platforms: Proficient in Atlassian Stack, Jenkins, OpenShift, Kafka, Elasticsearch, Terraform, etc.
+
+Responsibilities:
+
+
+I oversee the entire DevOps lifecycle, from sprint planning to deployment, ensuring timely delivery of high-quality features while responding efficiently to urgent requests.Employ CI tools such as Jenkins and Artifactory like JFrog.
+I leveraged Terraform to automate the provisioning and configuration of our cloud infrastructure for OpenShift, Jenkins, and other critical services, resulting in increased efficiency and reduced provisioning time by 50%
+I manage Kafka clusters used as a message bus for all microservices, ensuring high availability and message delivery. I also implemented a monitoring system that reduced Kafka downtime by 80%.Implement logging with Elasticsearch.
+
+
