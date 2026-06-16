@@ -1,0 +1,17 @@
+{
+  "event_id": "evt-1001",
+  "event_ts": "2026-06-15T12:00:00Z",
+  "account_id": "acct-901",
+  "merchant_id": "merch-77",
+  "transaction_amount": 241.13,
+  "currency": "USD",
+  "device_id": "dev-9",
+  "ip_address": "203.0.113.10",
+  "channel": "ecommerce",
+  "device_risk_score": 0.82,
+  "merchant_geo": {
+    "country": "US",
+    "region": "NY",
+    "city": "New York"
+  }
+}

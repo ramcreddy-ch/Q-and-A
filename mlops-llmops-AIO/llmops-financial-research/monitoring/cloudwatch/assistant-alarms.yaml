@@ -1,0 +1,16 @@
+alarms:
+  - name: assistant-p95-latency-high
+    metric: EndToEndLatencyP95
+    threshold: 3500
+    severity: sev2
+    runbook: docs/runbooks/citation-failure.md
+  - name: assistant-citation-presence-low
+    metric: CitationPresenceRate
+    threshold: 0.99
+    severity: sev1
+    runbook: docs/runbooks/citation-failure.md
+  - name: assistant-entitlement-breach-detected
+    metric: UnauthorizedChunkRetrievalCount
+    threshold: 1
+    severity: sev1
+    runbook: docs/runbooks/entitlement-breach.md

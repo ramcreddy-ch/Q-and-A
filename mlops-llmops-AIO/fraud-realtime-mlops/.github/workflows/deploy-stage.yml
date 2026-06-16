@@ -1,0 +1,44 @@
+name: deploy-fraud-stage
+
+on:
+  workflow_dispatch:
+    inputs:
+      model_package_arn:
+        description: 'Approved model package ARN for stage validation'
+        required: true
+      business_version:
+        description: 'Business release version'
+        required: true
+
+jobs:
+  deploy-stage:
+    runs-on: ubuntu-latest
+    environment: stage
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml boto3
+
+      - name: Validate stage config
+        run: python scripts/validate_config.py configs/stage/fraud-endpoint.yaml
+
+      - name: Deploy stage endpoint config
+        run: |
+          python pipelines/deployment/deploy.py \
+            --env stage \
+            --config configs/stage/fraud-endpoint.yaml \
+            --model-package-arn "${{ inputs.model_package_arn }}" \
+            --business-version "${{ inputs.business_version }}" \
+            --apply
+
+      - name: Run replay validation
+        run: python pipelines/deployment/shadow_validate.py --fixture tests/fixtures/sample_requests.jsonl --thresholds configs/stage/thresholds.yaml

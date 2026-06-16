@@ -1,0 +1,11 @@
+* @ml-platform/core
+/.github/workflows/ @ml-platform/release
+/docs/runbooks/ @ml-platform/oncall
+/docs/adr/ @ml-platform/core
+/pipelines/training/ @fraud-ds/core @ml-platform/core
+/pipelines/deployment/ @ml-platform/release @ml-platform/core
+/configs/prod/thresholds.yaml @fraud-ops/decisioning @ml-platform/release
+/configs/prod/fraud-endpoint.yaml @ml-platform/release @ml-platform/core
+/containers/fraud-inference/ @ml-platform/serving @fraud-ds/core
+/monitoring/ @ml-platform/observability
+/scripts/ @ml-platform/core

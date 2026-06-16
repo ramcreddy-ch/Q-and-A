@@ -1,0 +1,30 @@
+alarms:
+  - name: fraud-endpoint-5xx-high
+    metric: Invocation5XXErrors
+    statistic: Sum
+    period_seconds: 60
+    evaluation_periods: 3
+    threshold: 5
+    comparison: GreaterThanOrEqualToThreshold
+    severity: sev1
+    runbook: docs/runbooks/fraud-endpoint-sev1.md
+
+  - name: fraud-endpoint-p99-latency-high
+    metric: ModelLatencyP99
+    statistic: Average
+    period_seconds: 60
+    evaluation_periods: 5
+    threshold: 250
+    comparison: GreaterThanThreshold
+    severity: sev1
+    runbook: docs/runbooks/fraud-endpoint-sev1.md
+
+  - name: fraud-endpoint-invocations-drop
+    metric: Invocations
+    statistic: Sum
+    period_seconds: 60
+    evaluation_periods: 5
+    threshold: 10
+    comparison: LessThanThreshold
+    severity: sev2
+    runbook: docs/runbooks/fraud-endpoint-sev1.md

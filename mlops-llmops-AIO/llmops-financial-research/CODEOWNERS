@@ -1,0 +1,7 @@
+* @ml-platform/core
+/prompts/ @research-ml/core @ml-platform/core
+/configs/prod/ @ml-platform/release @research-product/owners
+/docs/runbooks/ @ml-platform/oncall @research-product/owners
+/eval/ @research-ml/core
+/retrieval/ @ml-platform/llmops @research-ml/core
+/monitoring/ @ml-platform/observability

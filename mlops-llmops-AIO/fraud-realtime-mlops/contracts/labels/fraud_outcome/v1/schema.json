@@ -1,0 +1,17 @@
+{
+  "title": "fraud_outcome_v1",
+  "type": "object",
+  "required": [
+    "event_id",
+    "label_ts",
+    "fraud_outcome",
+    "outcome_source"
+  ],
+  "properties": {
+    "event_id": { "type": "string" },
+    "label_ts": { "type": "string" },
+    "fraud_outcome": { "type": "string", "enum": ["confirmed_fraud", "legit", "chargeback_pending", "dispute_reversed"] },
+    "outcome_source": { "type": "string", "enum": ["chargeback_feed", "manual_review", "issuer_feedback"] },
+    "loss_amount": { "type": "number", "minimum": 0 }
+  }
+}

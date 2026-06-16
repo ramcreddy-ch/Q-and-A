@@ -1,0 +1,30 @@
+service_name: fraud-realtime-endpoint
+environment: prod
+region: us-east-1
+model_package_arn: arn:aws:sagemaker:us-east-1:123456789012:model-package/fraud-142
+business_version: fraud-v3.14
+instance_type: ml.c7i.2xlarge
+min_instances: 4
+max_instances: 20
+target_invocations_per_instance: 120
+execution_role_arn: arn:aws:iam::123456789012:role/SageMakerEndpointExecutionRoleFraudRealtime
+kms_key_id: arn:aws:kms:us-east-1:123456789012:key/prod-1111-2222-3333-4444
+subnet_ids:
+  - subnet-prod-111111
+  - subnet-prod-222222
+security_group_ids:
+  - sg-prod-111111
+threshold_config_version: fraud_thresholds_v27
+feature_contract_version: fraud_features_2026_06_14_01
+route_mode: canary
+canary_percent: 5
+rollback_target_model_package_arn: arn:aws:sagemaker:us-east-1:123456789012:model-package/fraud-141
+rollback_target_endpoint_config_name: fraud-realtime-endpoint-config-141
+alert_profile: fraud-prod-critical
+required_runbook: docs/runbooks/fraud-endpoint-sev1.md
+required_evidence_bundle: docs/release/evidence-bundle-template.md
+tags:
+  Service: fraud-realtime
+  Environment: prod
+  ManagedBy: github-actions
+  Criticality: tier1

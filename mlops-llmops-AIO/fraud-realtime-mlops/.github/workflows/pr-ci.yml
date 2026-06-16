@@ -1,0 +1,41 @@
+name: fraud-realtime-pr-ci
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r containers/fraud-inference/requirements.txt
+          pip install pytest pyyaml ruff
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Unit tests
+        run: pytest containers/fraud-inference/tests tests/contracts tests/integration -q
+
+      - name: Config validation
+        run: python scripts/validate_config.py configs/stage/fraud-endpoint.yaml
+
+      - name: Contract payload validation
+        run: |
+          python scripts/validate_contract_payload.py \
+            --schema contracts/events/card_auth_event/v2/schema.json \
+            --payload tests/fixtures/card_auth_event_v2_valid.json
+
+      - name: Local smoke test
+        run: bash scripts/local_inference_smoke.sh

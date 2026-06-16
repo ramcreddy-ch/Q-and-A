@@ -1,0 +1,37 @@
+{
+  "title": "card_auth_event_v2",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_ts",
+    "account_id",
+    "merchant_id",
+    "transaction_amount",
+    "currency",
+    "device_id",
+    "channel",
+    "device_risk_score",
+    "merchant_geo"
+  ],
+  "properties": {
+    "event_id": { "type": "string" },
+    "event_ts": { "type": "string" },
+    "account_id": { "type": "string" },
+    "merchant_id": { "type": "string" },
+    "transaction_amount": { "type": "number", "minimum": 0 },
+    "currency": { "type": "string", "enum": ["USD", "EUR", "GBP"] },
+    "device_id": { "type": "string" },
+    "ip_address": { "type": "string" },
+    "channel": { "type": "string", "enum": ["card_present", "ecommerce", "wallet", "bank_transfer"] },
+    "device_risk_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "merchant_geo": {
+      "type": "object",
+      "required": ["country", "region", "city"],
+      "properties": {
+        "country": { "type": "string" },
+        "region": { "type": "string" },
+        "city": { "type": "string" }
+      }
+    }
+  }
+}

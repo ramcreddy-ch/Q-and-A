@@ -1,0 +1,2 @@
+{"transaction_amount": 20.0, "account_id": "acct-1", "merchant_id": "m-1", "device_id": "d-1", "event_ts": "2026-06-15T12:00:00Z", "merchant_risk_score": 0.1, "device_trust_score": 0.98, "txn_count_15m_account": 0, "country_change_flag_24h": 0, "failed_login_count_1h": 0}
+{"transaction_amount": 1200.0, "account_id": "acct-9", "merchant_id": "m-9", "device_id": "d-9", "event_ts": "2026-06-15T12:00:02Z", "merchant_risk_score": 0.91, "device_trust_score": 0.25, "txn_count_15m_account": 7, "country_change_flag_24h": 1, "failed_login_count_1h": 3}

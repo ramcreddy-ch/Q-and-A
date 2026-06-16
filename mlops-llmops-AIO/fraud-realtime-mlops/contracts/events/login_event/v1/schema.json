@@ -1,0 +1,22 @@
+{
+  "title": "login_event_v1",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_ts",
+    "account_id",
+    "device_id",
+    "ip_address",
+    "auth_result"
+  ],
+  "properties": {
+    "event_id": { "type": "string" },
+    "event_ts": { "type": "string" },
+    "account_id": { "type": "string" },
+    "device_id": { "type": "string" },
+    "ip_address": { "type": "string" },
+    "auth_result": { "type": "string", "enum": ["success", "failure", "step_up"] },
+    "mfa_used": { "type": "boolean" },
+    "asn": { "type": "string" }
+  }
+}

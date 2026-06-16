@@ -1,0 +1,16 @@
+{
+  "event_id": "evt-1002",
+  "event_ts": "2026-06-15T12:05:00Z",
+  "account_id": "acct-902",
+  "merchant_id": "merch-88",
+  "transaction_amount": 18.33,
+  "currency": "USD",
+  "device_id": "dev-11",
+  "ip_address": "203.0.113.11",
+  "channel": "ecommerce",
+  "merchant_geo": {
+    "country": "US",
+    "region": "CA",
+    "city": "San Francisco"
+  }
+}

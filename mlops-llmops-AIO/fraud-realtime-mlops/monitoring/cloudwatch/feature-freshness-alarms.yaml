@@ -1,0 +1,20 @@
+alarms:
+  - name: fraud-feature-freshness-lag-critical
+    metric: FeatureFreshnessLagSeconds
+    statistic: Maximum
+    period_seconds: 60
+    evaluation_periods: 3
+    threshold: 300
+    comparison: GreaterThanThreshold
+    severity: sev2
+    runbook: docs/runbooks/online-feature-freshness.md
+
+  - name: fraud-feature-lookup-miss-rate-high
+    metric: FeatureLookupMissRate
+    statistic: Average
+    period_seconds: 60
+    evaluation_periods: 5
+    threshold: 0.02
+    comparison: GreaterThanThreshold
+    severity: sev2
+    runbook: docs/runbooks/online-feature-freshness.md

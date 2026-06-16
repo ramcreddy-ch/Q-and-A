@@ -1,0 +1,2 @@
+{"query": "What did management say about liquidity risk in the latest filing?", "expected_keywords": ["liquidity", "risk"], "requires_citation": true}
+{"query": "Summarize exposure to commercial real estate from the approved report.", "expected_keywords": ["commercial", "real estate"], "requires_citation": true}

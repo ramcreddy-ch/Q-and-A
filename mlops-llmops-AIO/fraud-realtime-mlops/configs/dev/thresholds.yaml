@@ -1,0 +1,8 @@
+version: fraud_thresholds_dev_v1
+default_bands:
+  approve_max: 0.15
+  review_max: 0.50
+  decline_min: 0.50
+cohorts: {}
+requires_dual_approval: false
+simulation_required: true

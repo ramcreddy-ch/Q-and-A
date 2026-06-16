@@ -1,0 +1,56 @@
+name: deploy-fraud-prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      model_package_arn:
+        description: 'Approved prod model package ARN'
+        required: true
+      business_version:
+        description: 'Business release version'
+        required: true
+      canary_percent:
+        description: 'Initial canary traffic percentage'
+        required: true
+        default: '5'
+
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment: prod
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml boto3
+
+      - name: Validate prod config
+        run: python scripts/validate_config.py configs/prod/fraud-endpoint.yaml
+
+      - name: Canary guardrail pre-check
+        run: python pipelines/deployment/canary_guardrails.py --thresholds configs/prod/thresholds.yaml --canary-percent "${{ inputs.canary_percent }}"
+
+      - name: Deploy canary
+        run: |
+          python pipelines/deployment/deploy.py \
+            --env prod \
+            --config configs/prod/fraud-endpoint.yaml \
+            --model-package-arn "${{ inputs.model_package_arn }}" \
+            --business-version "${{ inputs.business_version }}" \
+            --route-mode canary \
+            --canary-percent "${{ inputs.canary_percent }}" \
+            --apply
+
+      - name: Gather evidence bundle
+        run: bash scripts/gather_deployment_evidence.sh prod "${{ inputs.business_version }}"

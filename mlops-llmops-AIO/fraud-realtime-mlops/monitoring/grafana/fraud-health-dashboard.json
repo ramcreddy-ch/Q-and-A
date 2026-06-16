@@ -1,0 +1,11 @@
+{
+  "title": "Fraud Real-Time Health",
+  "description": "Core operational dashboard for fraud-serving path",
+  "panels": [
+    {"title": "Endpoint p95 latency", "metric": "ModelLatencyP95"},
+    {"title": "Endpoint 5xx errors", "metric": "Invocation5XXErrors"},
+    {"title": "Feature freshness lag", "metric": "FeatureFreshnessLagSeconds"},
+    {"title": "Approval rate proxy", "metric": "ApprovalRateProxy"},
+    {"title": "Manual review queue", "metric": "ManualReviewQueueDepth"}
+  ]
+}

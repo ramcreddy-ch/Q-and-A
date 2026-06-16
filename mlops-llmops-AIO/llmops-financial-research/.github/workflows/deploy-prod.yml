@@ -1,0 +1,32 @@
+name: deploy-llm-prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Business release version'
+        required: true
+      canary_percent:
+        description: 'Initial prod canary percent'
+        default: '5'
+        required: true
+
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+      - name: Validate prod config
+        run: python scripts/validate_config.py configs/prod/assistant.yaml
+      - name: Run prod guardrails
+        run: python pipelines/deployment/guardrails.py --config configs/prod/assistant.yaml --canary-percent "${{ inputs.canary_percent }}"
+      - name: Deploy prod canary plan
+        run: python pipelines/deployment/deploy.py --env prod --config configs/prod/assistant.yaml --version "${{ inputs.version }}" --route-mode canary --canary-percent "${{ inputs.canary_percent }}"

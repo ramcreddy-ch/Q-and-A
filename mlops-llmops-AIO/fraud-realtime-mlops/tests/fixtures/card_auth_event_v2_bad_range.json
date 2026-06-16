@@ -1,0 +1,17 @@
+{
+  "event_id": "evt-1003",
+  "event_ts": "2026-06-15T12:10:00Z",
+  "account_id": "acct-903",
+  "merchant_id": "merch-99",
+  "transaction_amount": -9.11,
+  "currency": "USD",
+  "device_id": "dev-12",
+  "ip_address": "203.0.113.12",
+  "channel": "ecommerce",
+  "device_risk_score": 1.2,
+  "merchant_geo": {
+    "country": "US",
+    "region": "TX",
+    "city": "Austin"
+  }
+}

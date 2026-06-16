@@ -1,0 +1,21 @@
+{
+  "title": "document_metadata_contract_v1",
+  "type": "object",
+  "required": [
+    "doc_id",
+    "doc_type",
+    "issuer",
+    "effective_date",
+    "acl_tags",
+    "source_system"
+  ],
+  "properties": {
+    "doc_id": { "type": "string" },
+    "doc_type": { "type": "string", "enum": ["10-K", "10-Q", "8-K", "earnings_call", "internal_research", "policy"] },
+    "issuer": { "type": "string" },
+    "effective_date": { "type": "string" },
+    "acl_tags": { "type": "object" },
+    "source_system": { "type": "string" },
+    "embedding_model_version": { "type": "string" }
+  }
+}

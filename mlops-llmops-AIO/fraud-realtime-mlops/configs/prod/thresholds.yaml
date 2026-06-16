@@ -1,0 +1,16 @@
+version: fraud_thresholds_v27
+default_bands:
+  approve_max: 0.12
+  review_max: 0.45
+  decline_min: 0.45
+cohorts:
+  high_risk_merchant:
+    approve_max: 0.08
+    review_max: 0.30
+    decline_min: 0.30
+  trusted_repeat_customer:
+    approve_max: 0.18
+    review_max: 0.55
+    decline_min: 0.55
+requires_dual_approval: true
+simulation_required: true

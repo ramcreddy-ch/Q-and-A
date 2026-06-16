@@ -1,0 +1,23 @@
+{
+  "title": "fraud_request_contract_v1",
+  "type": "object",
+  "required": [
+    "transaction_amount",
+    "account_id",
+    "merchant_id",
+    "device_id",
+    "event_ts"
+  ],
+  "properties": {
+    "transaction_amount": { "type": "number", "minimum": 0 },
+    "account_id": { "type": "string" },
+    "merchant_id": { "type": "string" },
+    "device_id": { "type": "string" },
+    "event_ts": { "type": "string" },
+    "merchant_risk_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "device_trust_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "txn_count_15m_account": { "type": "integer", "minimum": 0 },
+    "country_change_flag_24h": { "type": "integer", "enum": [0, 1] },
+    "failed_login_count_1h": { "type": "integer", "minimum": 0 }
+  }
+}
